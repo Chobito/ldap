@@ -30,10 +30,13 @@ Monitor i aixi veure-ls a la interficie grafica.
 ### Per arrencar els dockers
 #### Crear Network primer
 _Aixo te un motiu, volem que sempre s'arrenquin amb la mateixa Ip per que quan faci DNS LDAP , concideixin les ips._
-  $ docker network create --subnet 172.18.0.0/16 -d bridge test
-
+  ```bash
+  # docker network create --subnet 172.18.0.0/16 -d bridge test
+  ```
 #### Arrencar Docker LDAP! 
-  docker run --net test --ip 172.178.0.2 -h ldap.edt.org --name ldap -it antagme/ldap_supervisor:latest
+ ```bash
+   # docker run --net test --ip 172.178.0.2 -h ldap.edt.org --name ldap -it antagme/ldap_supervisor:latest
+ ```  
 #### Arrencar Docker Kerberos (TGT)  
   docker run --net test --ip 172.178.0.3 -h kserver.edt.org --name ldap -it antagme/kerberos:latest
 #### Arrencar Docker LDAP REPLICA
