@@ -3,10 +3,10 @@
 ## En que consisteix el proyecte ?
 
 Partirem de la base que tothom te una base de [LDAP](https://es.wikipedia.org/wiki/OpenLDAP) , teorica o practica.
-El que he fet ha sigut crear una infraestructura real amb _dockers_ del que podria ser una empresa o una escola.
+El que he fet ha sigut crear una infraestructura real amb `dockers` del que podria ser una empresa o una escola.
 Tota la comunicacio de dades sensibles entre els dockers es fa mitjançant TLS.
 
-La meva idea es tenir tots els dockers monitoritçats amb un servidor Zabbix central instalat a un docker httpd i agents zabbix a cada docker. En especial en el docker del servidor _LDAP_ la meva intencio es fabricar uns scripts per redirigir dades de la _BBDD_
+La meva idea es tenir tots els dockers monitoritçats amb un servidor Zabbix central instalat a un docker httpd i agents zabbix a cada docker. En especial en el docker del servidor `LDAP` la meva intencio es fabricar uns scripts per redirigir dades de la `BBDD`
 Monitor i aixi veure-ls a la interficie grafica.
 
 ### Tecnologies Emprades.
@@ -30,18 +30,21 @@ Monitor i aixi veure-ls a la interficie grafica.
 ### Per arrencar els dockers
 #### Crear Network primer
 _Aixo te un motiu, volem que sempre s'arrenquin amb la mateixa Ip per que quan faci DNS LDAP , concideixin les ips._
-  ```bash
-  # docker network create --subnet 172.18.0.0/16 -d bridge test
-  ```
+ ```bash
+ # docker network create --subnet 172.18.0.0/16 -d bridge test
+ ```
 #### Arrencar Docker LDAP! 
  ```bash
-   # docker run --net test --ip 172.178.0.2 -h ldap.edt.org --name ldap -it antagme/ldap_supervisor:latest
+ # docker run --net test --ip 172.178.0.2 -h ldap.edt.org --name ldap -it antagme/ldap_supervisor:latest
  ```  
 #### Arrencar Docker Kerberos (TGT)  
-  docker run --net test --ip 172.178.0.3 -h kserver.edt.org --name ldap -it antagme/kerberos:latest
+ ```bash
+ # docker run --net test --ip 172.178.0.3 -h kserver.edt.org --name ldap -it antagme/kerberos:latest
+ ```
 #### Arrencar Docker LDAP REPLICA
-  docker run --net test --ip 172.178.0.4 -h ldaprepl.edt.org --name replica -it antagme/ldap_replica:latest
-
+ ```bash
+ # docker run --net test --ip 172.178.0.4 -h ldaprepl.edt.org --name replica -it antagme/ldap_replica:latest
+ ```
 #### Nota important.
 _Es Molt important seguir l'ordre per rebre correctament les dades del DNS , encara que si falles, nomes hauria que reiniciarse el Daemon NSLCD al docker que falla_
 
