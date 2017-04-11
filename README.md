@@ -12,13 +12,13 @@ Monitor i aixi veure-ls a la interficie grafica.
 ### Tecnologies Emprades.
 
 1. Openldap
-  -- Amb Object Class:
-    -- Per a Gestionar Users.
-    -- Per a Gestionar Grups.
-    -- Per a fer de DNS.
+  1. Amb Object Class:
+    - Per a Gestionar Users.
+    - Per a Gestionar Grups.
+    - Per a fer de DNS.
 2. Docker
 3. Cyrus-sasl(Per a la auth de GSSAPI)
-  -- Implementades Autentificacions SASL GSSAPI(Ticket) y SASL External(Certificat).
+  -  Implementades Autentificacions SASL GSSAPI(Ticket) y SASL External(Certificat).
 4. Openssl
 5. Supervisord
 6. Nslcd
