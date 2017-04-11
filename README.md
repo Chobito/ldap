@@ -11,20 +11,20 @@ Monitor i aixi veure-ls a la interficie grafica.
 
 ### Tecnologies Emprades.
 
-* Openldap
+1. Openldap
   -- Amb Object Class:
     -- Per a Gestionar Users.
     -- Per a Gestionar Grups.
     -- Per a fer de DNS.
-* Docker
-* Cyrus-sasl(Per a la auth de GSSAPI)
+2. Docker
+3. Cyrus-sasl(Per a la auth de GSSAPI)
   -- Implementades Autentificacions SASL GSSAPI(Ticket) y SASL External(Certificat).
-* Openssl
-* Supervisord
-* Nslcd
-* Kerberos
-* PAM
-* Zabbix Agentd y Zabbix Server
+4. Openssl
+5. Supervisord
+6. Nslcd
+7. Kerberos
+8. PAM
+9. Zabbix Agentd y Zabbix Server
 
 ### Under Construction...
 
