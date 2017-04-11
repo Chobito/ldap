@@ -25,6 +25,22 @@ Monitor i aixi veure-ls a la interficie grafica.
 7. Kerberos
 8. PAM
 9. Zabbix Agentd y Zabbix Server
+10. Replica LDAP mitjançant TLS y SASL GSSAPI.
+
+### Per arrencar els dockers
+#### Crear Network primer
+_Aixo te un motiu, volem que sempre s'arrenquin amb la mateixa Ip per que quan faci DNS LDAP , concideixin les ips._
+  $ docker network create --subnet 172.18.0.0/16 -d bridge test
+
+#### Arrencar Docker LDAP! 
+  docker run --net test --ip 172.178.0.2 -h ldap.edt.org --name ldap -it antagme/ldap_supervisor:latest
+#### Arrencar Docker Kerberos (TGT)  
+  docker run --net test --ip 172.178.0.3 -h kserver.edt.org --name ldap -it antagme/kerberos:latest
+#### Arrencar Docker LDAP REPLICA
+  docker run --net test --ip 172.178.0.4 -h ldaprepl.edt.org --name replica -it antagme/ldap_replica:latest
+
+#### Nota important.
+_Es Molt important seguir l'ordre per rebre correctament les dades del DNS , encara que si falles, nomes hauria que reiniciarse el Daemon NSLCD al docker que falla_
 
 ### Under Construction...
 
